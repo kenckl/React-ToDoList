@@ -8,7 +8,8 @@ export default class ToDoItem extends Component {
     deleteItem = () => {
         this.props.deleteItem(this.props.id);
     }
-    
+
+    // style put in a seperate css file
     render() {
         return (
             <div>
