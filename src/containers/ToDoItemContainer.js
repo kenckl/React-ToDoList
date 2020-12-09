@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
-import ToDoItem from '../components/ToDoItem';
-import { updateItemStatus, deleteItem } from '../actions'
+import ToDoItem from "../components/ToDoItem"
+import {connect} from "react-redux"
+import {updateToDo, deleteToDo} from "../actions"
 
 const mapDispatchToProps = dispatch => ({
-    updateStatus: (id) => dispatch(updateItemStatus(id)),
-    deleteItem: (id) => dispatch(deleteItem(id))
+    updateToDo : (id) => {dispatch(updateToDo(id))},
+    deleteToDo : (id) => {dispatch(deleteToDo(id))}
 })
 
-const ToDoItemContainer = connect(null, mapDispatchToProps)(ToDoItem);
+const ToDoItemContainer = connect(null, mapDispatchToProps)(ToDoItem)
 
 export default ToDoItemContainer;

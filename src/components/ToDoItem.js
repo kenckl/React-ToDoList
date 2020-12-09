@@ -1,24 +1,35 @@
 import React, { Component } from 'react';
+import {updateTodo, deleteTodo} from '../apis/todos'
+import { Button } from 'antd';
 
-export default class ToDoItem extends Component {
+class ToDoItem extends Component {
+
     updateStatus = () => {
-        this.props.updateStatus(this.props.id);
-    }
+        updateTodo(this.props.todo.id,this.props.todo.done).then(response => {
+            this.props.updateToDo(response.data.id);
+        });
+        
+    };
 
-    deleteItem = () => {
-        this.props.deleteItem(this.props.id);
-    }
+    removeItem = () => {
+        deleteTodo(this.props.todo.id).then(() => {
+            this.props.deleteToDo(this.props.todo.id);
+        })
+    };
 
-    // style put in a seperate css file
     render() {
+        const text = this.props.todo.text;
+        let todoClass = this.props.todo.done ? "crossed-line" : "";
+        
         return (
-            <div>
-                <input style={{
-                    textDecoration: this.props.done ? 'line-through' : 'none',
-                }}  type="button" value={this.props.text} id={this.props.id} onClick={this.updateStatus} />
-                <input type="button"  value="x" onClick={this.deleteItem} />
-            </div>
+                <fieldset>
+                    <Button type="default" shape='circle'size={'small'} onClick={this.removeItem}>x</Button>
+                    <label className={`${todoClass}`} onClick={this.updateStatus}> {text} </label>
+                  
+                </fieldset>
+
         );
     }
 }
 
+export default ToDoItem;
