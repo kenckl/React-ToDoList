@@ -37,30 +37,29 @@ class ToDoItem extends Component {
         })
     }
 
+
     render() {
         console.log(this.props.todo.id);
         const text = this.props.todo.text;
         const todoId = this.props.todo.id;
-        const showAddLabel = this.state.showAddLabel;
         let todoClass = this.props.todo.done ? "crossed-line" : "";
         
         return (
-            <div>
-                {showAddLabel ? <AddLabel />:null}
+            <div id={todoId}>
+                <AddLabel />
                 <fieldset>
                     <Button type="default" shape='circle'size={'small'} onClick={this.removeItem}>x</Button>
                     <label className={`${todoClass}`} onClick={this.updateStatus}> {text} </label>
-                    {/* <p flex="auto" style={{textAlign:'right'}}>{this.props.todo.labels.map((label)=><Tag key={label} onClick={this.onClickLabel}>{label}</Tag>)}</p> */}
                 </fieldset>
 
-                <ContextMenu
+                {/* <ContextMenu
                     contextId={todoId}
                     items={[
                         {
                             label: 'Add Label',
                             onClick: this.addLabel
                         }
-                    ]}/>
+                    ]}/> */}
             </div>
         );
     }
