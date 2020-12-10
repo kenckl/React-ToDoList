@@ -6,14 +6,14 @@ import { v4 as uuidv4 } from 'uuid'
 
 class ToDoGroup extends Component {
     
-    componentDidMount() {
-        getTodos().then((response) => {
-            console.log(response.data);
-            this.props.initToDo(response.data)
-        }
+    // componentDidMount() {
+    //     getTodos().then((response) => {
+    //         console.log(response.data);
+    //         this.props.initToDo(response.data)
+    //     }
             
-        )
-    }
+    //     )
+    // }
     
     render() {
         const todos = this.props.todoItems.map((todo) => 
