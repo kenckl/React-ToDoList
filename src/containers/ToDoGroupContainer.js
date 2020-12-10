@@ -10,6 +10,6 @@ const mapDispatchToProps = dispatch => ({
     initToDo: (todoItems) => dispatch(initToDo(todoItems))
 })
 
-const ToDoGroupContainer = connect(mapStateToProps)(ToDoGroup)
+const ToDoGroupContainer = connect(mapStateToProps, mapDispatchToProps)(ToDoGroup)
 
 export default ToDoGroupContainer;

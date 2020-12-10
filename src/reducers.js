@@ -14,7 +14,7 @@ const todoList = (state = [], action) => {
     if (action.type === INIT_TODO){
         return action.payload;
     }
-
+    
     return state;
 }
 

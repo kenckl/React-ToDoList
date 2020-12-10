@@ -11,12 +11,10 @@ class ToDoGenerator extends Component {
         this.state = {input: ''}
     }
 
-    addToList = (todoItem) => {
-        addTodo(todoItem).then(response => {
+    addToList = (event) => {
+        let todoItem = {text: this.state.input, done: false, label: []}
+        addTodo(todoItem).then((response) => {
             this.props.addToDo(response.data);
-            this.setState({
-                input:''
-            });
         });
     }
 
@@ -26,10 +24,11 @@ class ToDoGenerator extends Component {
                 <Search 
                         placeholder="Please enter your todo item"
                         enterButton="Submit"
+                        value={this.state.text}
                         // size="large"
                         onSearch={this.addToList}
                         style={{ width: 500, margin: '0 10px' }}
-                        />
+                />
             </div>
         );
     }

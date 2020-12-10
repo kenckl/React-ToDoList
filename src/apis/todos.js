@@ -4,14 +4,14 @@ export const getTodos = () => {
     return api.get('/todos')
 }
 
-export const addTodo = (text) => {
-    return api.post('/todos', {text})
+export const addTodo = (todoItem) => {
+    return api.post('/todos', todoItem)
 }
 
-export const updateTodo = (id,done) => {
-    return api.put(`/todos/${id}`, {done: !done})
+export const updateTodo = (todoItem) => {
+    return api.put(`/todos/${todoItem.id}`, {...todoItem, done: !todoItem.done})
 }
 
-export const deleteTodo = (id) => {
-    return api.delete(`/todos/${id}`)
+export const deleteTodo = (todoItemId) => {
+    return api.delete(`/todos/${todoItemId}`)
 }
